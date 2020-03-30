@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>校外网->校内网</title>
+</head>
+<body>
+	<!-- 代码也很丑 但又不是不能看 -->
+	<p>
+		开发者：虽然很丑 但又不是不能用 <button onclick="window.open('https://ivpn.hitwh.edu.cn/')">hitwh的ivpn主页</button> <button onclick="bugReport()">报告BUG（使用邮件）</button>
+	</p>
+
+	<p>
+	<input type="text" name="keyWord" value="" onclick="this.select()" onkeydown="if(event.keyCode==13){baidu();}"> 
+	<button onclick="baidu()">百度一下</button>
+	</p>
+
+	<p>
+    <input type="text" name="inputUrl" value="www.baidu.com" onclick="this.select()" onkeydown="if(event.keyCode==13){convert();}"> 
+	<button onclick="convert()">校外网->校内网</button> <br/>
+	</p>
+
+	<p>
+		<textarea id="convertedUrl" rows="10" cols="40" readonly="readonly" style="resize:none;"></textarea> <br/>
+	</p>
+
+	<p>
+		<button onclick="selectCopy()">全选并复制</button> <button onclick="forward()">&nbsp&nbsp&nbsp&nbsp转到&nbsp&nbsp&nbsp&nbsp</button> <br/>
+	</p>
+
+	<script>
+		//js赛高
+		var errCode = ["没毛病", "可能已经是校内网了"];
+		var usage = "使用场景：\n1. 访问一些外网访问不了的校内网站\n2. 使用高校的企业账号访问一些网站\n3. 访问一些正常访问很慢的网站\n希望能抛砖引玉 如果有帮到忙就很开心了";
+		document.getElementById("convertedUrl").value = usage;
+		function baidu() {
+			window.open("http://www-baidu-com-s.ivpn.hitwh.edu.cn:8118/s?wd="+document.getElementsByName("keyWord")[0].value);
+		}
+		function convert() {
+		    var oriUrl = document.getElementsByName("inputUrl")[0].value;
+		    var errLevel = isNotValid(oriUrl);
+		    if (errLevel != 0) {
+		    	alert("转换结果可能不准：" + errCode[errLevel]);
+		    }
+		    if (/^http:\/\/.*/.test(oriUrl)) {
+		    	oriUrl = oriUrl.substring(7, oriUrl.length);
+		    }
+		    else if (/^https:\/\/.*/.test(oriUrl)) {
+		    	oriUrl = oriUrl.substring(8, oriUrl.length);
+		    }
+		    var delimSlash = oriUrl.search("/");
+		    var convertedDomainPort = "";
+		    var dir = "";
+		    if (delimSlash == -1) {
+		    	convertedDomainPort = oriUrl.replace(/\./g, "-");
+		    }
+		    else {
+		    	convertedDomainPort = oriUrl.substring(0, delimSlash).replace(/\./g, "-");
+		    	dir = oriUrl.substring(delimSlash, oriUrl.length);
+		    }
+	    	if (convertedDomainPort.search(":") != -1) {
+	    		convertedDomainPort = convertedDomainPort.replace(/:/g, "-") + "-p";
+	    	}
+	    	document.getElementById("convertedUrl").value = "http://" + convertedDomainPort + ".ivpn.hitwh.edu.cn:8118" + dir;
+	    	document.getElementById("convertedUrl").select();
+		}
+		function selectCopy() {
+	    	document.getElementById("convertedUrl").select();
+	    	document.execCommand("Copy");
+		}
+		function forward() {
+			window.open(document.getElementById("convertedUrl").value);
+		}
+		function isNotValid(oriUrl) {
+			if (oriUrl.search("ivpn.hitwh.edu.cn") != -1) {
+				return 1;
+			}
+			return 0;
+		}
+		function bugReport(oriUrl) {
+			window.location.href = "mailto:tvrctkmytfln@outlook.com?subject=开发者很帅";
+		}
+	</script>
+
+</body>
+</html>
