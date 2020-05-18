@@ -18,7 +18,7 @@
 	</p>
 
 	<p>
-    <input type="text" name="inputUrl" value="www.baidu.com" onkeydown="if(event.keyCode==13){convert();}"> 
+    <input type="text" name="inputUrl" id="inputURL" value="www.baidu.com" onkeydown="if(event.keyCode==13){convert();document.getElementById('btnForward').focus()}" onfocus="inputSelect()" onblur="inputBlur()"> 
 	<button onclick="convert()">校外网->校内网</button> <br/>
 	</p>
 
@@ -27,13 +27,14 @@
 	</p>
 
 	<p>
-		<button onclick="selectCopy()">全选并复制</button> <button onclick="forward()">&nbsp&nbsp&nbsp&nbsp转到&nbsp&nbsp&nbsp&nbsp</button> <br/>
+		<button onclick="selectCopy()">全选并复制</button> <button id="btnForward" onclick="forward()">&nbsp&nbsp&nbsp&nbsp转到&nbsp&nbsp&nbsp&nbsp</button> <br/>
 	</p>
 
 	<script>
 		//js赛高
 		var errCode = ["没毛病", "可能已经是校内网了"];
 		var usage = "使用场景：\n1. 访问一些外网访问不了的校内网站\n2. 使用高校的企业账号访问一些网站\n3. 访问一些正常访问很慢的网站\n希望能抛砖引玉 如果有帮到忙就很开心了\n\n近期更新：\n无\n";
+		var inputCount = 0;
 		document.getElementById("convertedUrl").value = usage;
 		function baidu() {
 			window.open("http://www-baidu-com-s.ivpn.hitwh.edu.cn:8118/s?wd="+document.getElementsByName("keyWord")[0].value);
@@ -81,6 +82,15 @@
 				return 1;
 			}
 			return 0;
+		}
+		function inputSelect() {
+			if (inputCount == 0) {
+				inputCount = 1;
+				document.getElementById('inputURL').select();
+			}
+		}
+		function inputBlur() {
+			inputCount = 0;
 		}
 		function bugReport(oriUrl) {
 			window.location.href = "mailto:tvrctkmytfln@outlook.com?subject=开发者很帅";
