@@ -24,7 +24,7 @@
 				<div class="row">
 					<div class="input-group">
 						<input type="text" name="keyWord" class="form-control" style="width:250px" placeholder="请输入关键词" value="" onkeydown="if(event.keyCode==13){baidu();}">
-		    			<button class="btn btn-primary" onclick="baidu()">&nbsp&nbsp&nbsp&nbsp&nbsp百度一下&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+		    			<button class="btn btn-primary" onclick="baidu()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;百度一下&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 		    		</div>
 				</div>
 				<div class="row">
@@ -40,7 +40,7 @@
 					<div class="col-lg-2">
 					</div>
 					<div>
-						<button class="btn btn-primary" onclick="selectCopy()">全选并复制</button> <button id="btnForward" class="btn btn-primary" onclick="forward()">&nbsp&nbsp&nbsp&nbsp&nbsp转到&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+						<button class="btn btn-primary" onclick="selectCopy()">全选并复制</button> <button id="btnForward" class="btn btn-primary" onclick="forward()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;转到&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 					</div>
 				</div>
 				<hr>
@@ -50,7 +50,8 @@
 					<button type="button" class="btn btn-link" onclick="window.open('http://today-hitwh-edu-cn.ivpn.hitwh.edu.cn:8118/1024/list.htm')">通知公告</button> 
 					<button type="button" class="btn btn-link" onclick="window.open('http://web-hitwh-edu-cn.ivpn.hitwh.edu.cn:8118/_s28/ks/list.psp')">教务通知</button>
 					<button type="button" class="btn btn-link" onclick="window.open('http://shindo-sinaapp-com.ivpn.hitwh.edu.cn:8118/gpa')">GPA计算器</button>
-					<button type="button" class="btn btn-link" onclick="window.open('/pure_ORCA/200330')">原网页（收藏）</button>
+					<button type="button" class="btn btn-link" onclick="window.open('https://tuixue.online/visa/')">米国签证查询</button>
+					<button type="button" class="btn btn-link" onclick="window.open('https://www.hrka.cc/')">好人卡（消遣用）</button>
 					<button type="button" class="btn btn-link" onclick="bugReport()">报告BUG（使用邮件）</button>
 					
 				</div>
@@ -62,7 +63,7 @@
 	<script>
 		//js赛高
 		var errCode = ["没毛病", "可能已经是校内网了"];
-		var usage = "使用场景：\n1. 访问一些外网访问不了的校内网站\n2. 使用高校的企业账号访问一些网站\n3. 访问一些正常访问很慢的网站\n希望能抛砖引玉 如果有帮到忙就很开心了\n\n近期更新：\n1. 丑化界面\n\n开发者：界面虽然很丑 但又不是不能用\n";
+		var usage = "使用场景：\n1. 访问一些外网访问不了的校内网站\n2. 使用高校的企业账号访问一些网站\n3. 访问一些正常访问很慢的网站\n4. 突破一些网络屏蔽（请合理使用）\n开发者技术有限 希望能抛砖引玉 如果有帮到忙就很开心了\n\n由于开发者着实太忙，本站于2020年8月1日至2021年1月31日期间几乎会处于暂停维护的状态，实在抱歉，并恳请各位耐心等待，有事请向我发邮件。届时本站定会以全新的面貌和使用体验与大家相见，并会加入无感认证、PWA模块以及多国语支持等很酷的东西。最后感谢各位的支持以及室友JFH提供的巨大帮助。\n";
 		var inputCount = 0;
 		document.getElementById("convertedUrl").value = usage;
 		function baidu() {
